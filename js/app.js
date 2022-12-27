@@ -1,11 +1,11 @@
 // Variables y selectores
-const formulario = document.querySelector('#agregar-gasto');
-const gastoListado = document.querySelector('#gasto ul');
+const formulario = document.getElementById('agregar-gasto');
+const gastosListado = document.querySelector('#gastos ul');
 
 
 //Eventos
-eventListteners();
-function eventListteners(){
+eventListeners();
+function eventListeners() {
     document.addEventListener('DOMContentLoaded', preguntarPresupuesto);
 }
 
@@ -19,9 +19,15 @@ function eventListteners(){
 function preguntarPresupuesto() {
     const presupuestoUsuario = prompt('¿Cual es tu presupuesto?');
 
-    console.log(Number( presupuestoUsuario));
-
-    if(presupuestoUsuario === '' || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ){
-        windows.location.reload();
+    if( presupuestoUsuario === '' || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ) {
+        window.location.reload();
     }
+
+    // Presupuesto valido
+    presupuesto = new Presupuesto(presupuestoUsuario);
+
+    // console.log(presupuesto);
+
+    // Agregarlo en el HTML
+    ui.insertarPresupuesto(presupuesto)
 }
